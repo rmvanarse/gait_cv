@@ -28,8 +28,11 @@ while(1):
 	#mask = cv2.inRange(frame, np.array([0 ,100, 0]), np.array([100 ,255,100]))
 	#Show result
 
-
+	img2, contours, hierarchy = cv2.findContours(temp_img,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 	cv2.imshow('Intermediate', temp_img)
+	img2 = cv2.drawContours(img2, contours, 0, (0,255,0), 3)
+	cv2.imshow('Contour', img2)
+
 	#cv2.imshow('Green', cv2.threshold(frame[:,:,0], 200, 255, cv2.THRESH_BINARY)[1])
 
 	#image, contours, hierarchy = cv2.findContours(temp_img,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
