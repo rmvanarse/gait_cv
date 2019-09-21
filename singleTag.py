@@ -38,9 +38,23 @@ while(1):
 	#image, contours, hierarchy = cv2.findContours(temp_img,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 	#cv2.imshow('contours', cv2.drawContours(image, contours, -1, (0,255,0), 3))
 	#Esc
+
+	moments = cv2.moments(contours[0])
+	"""
+	rect = cv2.minAreaRect(contours[0])
+	box = cv2.boxPoints(rect)
+	box = np.int0(box)
+	img2 = cv2.drawContours(img2, [box],0,(0,0,255),2)
+	cv2.imshow('Bounds', img2)
+	"""
+
+
 	if cv2.waitKey(1)==27:
 		break
 	
 #Cleanup
 feed.release()
 cv2.destroyAllWindows()
+
+for M in moments:
+	print(M, moments[M])
